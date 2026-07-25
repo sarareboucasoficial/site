@@ -1,0 +1,32 @@
+VERSÃO FINAL CORRIGIDA
+
+A estrutura foi conferida com o seu HTML e o seu CSS.
+
+INCLUÍDO:
+- index.html
+- style.css
+- páginas de SEO
+- sitemap.xml
+- robots.txt
+
+IMAGENS:
+Os arquivos HTML utilizam:
+- imagens/foto-hero.png.png
+- imagens/foto-sobre.png.png
+
+Mantenha a pasta "imagens" que já existe no seu projeto.
+
+COMO INSTALAR:
+1. Abra esta pasta extraída.
+2. Selecione somente os arquivos que estão dentro dela.
+3. Copie para a pasta principal "sarareboucasSite".
+4. Aceite substituir os arquivos quando solicitado.
+5. Não apague a pasta "imagens" nem o arquivo CNAME.
+
+PUBLICAÇÃO:
+git add .
+git commit -m "Publica site completo com SEO"
+git push
+
+WHATSAPP:
+https://wa.me/5521997652825
