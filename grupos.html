@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Conheça os grupos terapêuticos online conduzidos por Sara Rebouças, psicóloga clínica, CRP-RJ 05/86520.">
+  <meta name="author" content="Sara Rebouças">
+  <meta name="robots" content="index, follow">
+  <title>Grupos Terapêuticos | Sara Rebouças</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .groups-page-hero{position:relative;overflow:hidden;padding:108px 0 92px;background:radial-gradient(circle at 12% 18%,rgba(223,108,94,.14),transparent 30%),radial-gradient(circle at 88% 18%,rgba(216,168,79,.18),transparent 26%),linear-gradient(135deg,#fffaf5 0%,#f6eadc 100%)}
+    .groups-page-hero-grid{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:72px;align-items:center}
+    .groups-page-hero h1{max-width:760px;margin:22px 0;font-family:"Playfair Display",serif;font-size:clamp(52px,5.8vw,82px);line-height:.98;letter-spacing:-.045em}
+    .groups-page-hero h1 em{display:block;color:var(--wine);font-style:normal}
+    .groups-page-hero p{max-width:680px;color:var(--ink-soft);font-size:18px;line-height:1.8}
+    .groups-page-summary{display:grid;gap:16px}
+    .groups-page-summary article{padding:22px 24px;border:1px solid rgba(112,34,77,.12);border-radius:20px;background:rgba(255,255,255,.7);box-shadow:0 18px 46px rgba(71,19,46,.08);backdrop-filter:blur(12px)}
+    .groups-page-summary span{color:var(--coral);font-size:11px;font-weight:800;letter-spacing:.12em}
+    .groups-page-summary strong{display:block;margin:6px 0 4px;font-family:"Playfair Display",serif;font-size:23px}
+    .groups-page-summary p{margin:0;font-size:14px;line-height:1.6}
+    .groups-catalog{padding:106px 0;background:#fffaf4}
+    .groups-catalog-intro{max-width:820px;margin:0 auto 54px;text-align:center}
+    .groups-catalog-intro h2{margin:15px 0 18px;font-family:"Playfair Display",serif;font-size:clamp(42px,4.8vw,66px);line-height:1.04;letter-spacing:-.035em}
+    .groups-catalog-intro p{color:var(--ink-soft);font-size:18px;line-height:1.8}
+    .groups-catalog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .group-catalog-card{position:relative;overflow:hidden;display:flex;min-height:500px;flex-direction:column;padding:30px;border:1px solid #eadbd0;border-radius:26px;background:#fff;box-shadow:0 24px 62px rgba(71,19,46,.1);transition:transform .32s ease,box-shadow .32s ease,border-color .32s ease}
+    .group-catalog-card::before{content:"";position:absolute;inset:0 0 auto;height:8px;background:linear-gradient(90deg,var(--coral),var(--gold),var(--wine))}
+    .group-catalog-card:hover{transform:translateY(-10px);border-color:rgba(112,34,77,.24);box-shadow:0 34px 78px rgba(71,19,46,.17)}
+    .group-card-number{color:var(--coral);font-size:12px;font-weight:800;letter-spacing:.12em}
+    .group-catalog-card h3{margin:22px 0 16px;font-family:"Playfair Display",serif;font-size:33px;line-height:1.05}
+    .group-catalog-card>p{margin:0;color:var(--ink-soft);line-height:1.75}
+    .group-catalog-card ul{display:grid;gap:9px;margin:24px 0;padding:0;list-style:none}
+    .group-catalog-card li{position:relative;padding-left:23px;color:var(--ink-soft);font-size:14px}
+    .group-catalog-card li::before{content:"✦";position:absolute;left:0;color:var(--coral)}
+    .group-card-footer{margin-top:auto}
+    .group-card-detail{display:block;margin-bottom:16px;color:var(--wine);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .group-catalog-card .btn{width:100%}
+    .groups-note{max-width:860px;margin:40px auto 0;padding:20px 24px;border:1px solid rgba(112,34,77,.13);border-radius:18px;background:var(--cream-dark);color:var(--ink-soft);text-align:center}
+    .groups-choice{padding:106px 0;background:radial-gradient(circle at 82% 20%,rgba(223,108,94,.22),transparent 30%),linear-gradient(135deg,var(--wine-dark),var(--plum));color:#fff}
+    .groups-choice-grid{display:grid;grid-template-columns:1fr .8fr;gap:70px;align-items:center}
+    .groups-choice h2{margin:14px 0 18px;font-family:"Playfair Display",serif;font-size:clamp(42px,4.6vw,64px);line-height:1.04;letter-spacing:-.035em}
+    .groups-choice p{color:rgba(255,255,255,.74);font-size:18px;line-height:1.8}
+    .groups-choice-box{padding:30px;border:1px solid rgba(255,255,255,.13);border-radius:24px;background:rgba(255,255,255,.08)}
+    .groups-choice-box strong{display:block;margin-bottom:10px;font-size:18px}
+    .groups-choice-box p{margin:0 0 20px;font-size:15px}
+    .reveal{opacity:1;transform:translateY(0)}
+    .js-ready .reveal{opacity:0;transform:translateY(34px);transition:opacity .82s ease,transform .9s cubic-bezier(.22,1,.36,1)}
+    .js-ready .reveal.is-visible{opacity:1;transform:translateY(0)}
+    @media(max-width:980px){.groups-page-hero-grid,.groups-choice-grid{grid-template-columns:1fr}.groups-catalog-grid{grid-template-columns:1fr}.group-catalog-card{min-height:auto}}
+    @media(max-width:680px){.groups-page-hero,.groups-catalog,.groups-choice{padding:72px 0}.groups-page-hero h1{font-size:49px}.group-catalog-card{padding:26px 22px}}
+  </style>
+</head>
+<body>
+  <div class="progress-bar" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html#inicio"><strong>Sara Rebouças</strong><span>Psicóloga Clínica • CRP-RJ 05/86520</span></a>
+      <nav class="main-nav" aria-label="Navegação principal">
+        <a href="index.html#inicio">Início</a><a href="index.html#especialidades">Especialidades</a><a href="index.html#atendimento">Atendimento</a><a href="grupos.html">Grupos</a><a href="index.html#sobre">Sobre mim</a>
+      </nav>
+      <a class="header-cta" href="https://wa.me/5521997652825?text=Ol%C3%A1%20Sara.%20Quero%20saber%20mais%20sobre%20os%20grupos%20terap%C3%AAuticos." target="_blank" rel="noopener noreferrer">Falar comigo</a>
+    </div>
+  </header>
+  <main>
+    <section class="groups-page-hero">
+      <div class="container groups-page-hero-grid">
+        <div class="reveal">
+          <span class="eyebrow">Grupos online • duração de 3 meses</span>
+          <h1>Encontre a jornada <em>que conversa com o seu momento.</em></h1>
+          <p>Cada grupo foi construído para um público específico, com conteúdo prático, acolhimento e orientação psicológica para quem deseja compreender padrões, fortalecer vínculos e construir mudanças reais.</p>
+          <a class="btn btn-primary" href="#grupos">Conhecer os grupos disponíveis</a>
+        </div>
+        <div class="groups-page-summary">
+          <article class="reveal"><span>01</span><strong>Finanças emocionais</strong><p>Para quem deseja compreender padrões emocionais ligados ao dinheiro.</p></article>
+          <article class="reveal"><span>02</span><strong>Pais e líderes de adolescentes</strong><p>Para quem precisa orientar com mais clareza, vínculo e segurança.</p></article>
+          <article class="reveal"><span>03</span><strong>Pastoras e esposas de pastores</strong><p>Para mulheres que cuidam de muitos e também precisam ser cuidadas.</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="groups-catalog" id="grupos">
+      <div class="container">
+        <div class="groups-catalog-intro reveal">
+          <span class="section-kicker">Grupos disponíveis</span>
+          <h2>Três jornadas, três públicos e um cuidado direcionado.</h2>
+          <p>Escolha o grupo que mais se aproxima da sua realidade. Cada página apresenta proposta, conteúdo, investimento e forma de participação.</p>
+        </div>
+        <div class="groups-catalog-grid">
+          <article class="group-catalog-card reveal">
+            <span class="group-card-number">01</span><h3>Finanças emocionais</h3>
+            <p>Para quem trabalha, recebe e sente que o dinheiro desaparece. O grupo ajuda a compreender consumo emocional, crenças e padrões financeiros.</p>
+            <ul><li>Comportamento financeiro</li><li>Impulsividade e consumo emocional</li><li>Crenças familiares sobre dinheiro</li><li>Organização e escolhas sustentáveis</li></ul>
+            <div class="group-card-footer"><span class="group-card-detail">3 meses • encontros online</span><a class="btn btn-primary" href="grupo-financas-premium.html">Conhecer este grupo</a></div>
+          </article>
+          <article class="group-catalog-card reveal">
+            <span class="group-card-number">02</span><h3>Pais e líderes de adolescentes</h3>
+            <p>Um espaço para compreender melhor o adolescente, fortalecer vínculos e estabelecer limites sem romper a conexão.</p>
+            <ul><li>Comunicação com adolescentes</li><li>Limites com vínculo</li><li>Comportamentos de risco</li><li>Orientação para pais e líderes</li></ul>
+            <div class="group-card-footer"><span class="group-card-detail">3 meses • encontros online</span><a class="btn btn-primary" href="grupo-adolescentes.html">Conhecer este grupo</a></div>
+          </article>
+          <article class="group-catalog-card reveal">
+            <span class="group-card-number">03</span><h3>Pastoras e esposas de pastores</h3>
+            <p>Um espaço de cuidado emocional para mulheres que sustentam responsabilidades ministeriais, familiares e relacionais.</p>
+            <ul><li>Sobrecarga ministerial</li><li>Identidade além da função</li><li>Limites e autocuidado</li><li>Solidão e pressões da liderança</li></ul>
+            <div class="group-card-footer"><span class="group-card-detail">3 meses • encontros online</span><a class="btn btn-primary" href="grupo-pastoras.html">Conhecer este grupo</a></div>
+          </article>
+        </div>
+        <p class="groups-note reveal">A participação será confirmada após uma conversa inicial, para verificar se a proposta do grupo é adequada ao momento de cada pessoa.</p>
+      </div>
+    </section>
+    <section class="groups-choice">
+      <div class="container groups-choice-grid">
+        <div class="reveal"><span class="section-kicker light">Ainda está em dúvida?</span><h2>Você não precisa escolher sozinha.</h2><p>Fale diretamente comigo. Vou explicar como os grupos funcionam e ajudar você a identificar qual proposta combina com o seu momento.</p></div>
+        <div class="groups-choice-box reveal"><strong>Receba as informações completas</strong><p>Datas, horários, investimento, forma de pagamento e critérios para participação.</p><a class="btn btn-light" href="https://wa.me/5521997652825?text=Ol%C3%A1%20Sara.%20Quero%20entender%20qual%20grupo%20terap%C3%AAutico%20%C3%A9%20mais%20adequado%20para%20mim." target="_blank" rel="noopener noreferrer">Conversar pelo WhatsApp</a></div>
+      </div>
+    </section>
+  </main>
+  <a class="mobile-sticky-cta" href="https://wa.me/5521997652825?text=Ol%C3%A1%20Sara.%20Quero%20saber%20mais%20sobre%20os%20grupos%20terap%C3%AAuticos." target="_blank" rel="noopener noreferrer">Conhecer os grupos</a>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div><strong>Sara Rebouças</strong><span>Psicóloga Clínica • CRP-RJ 05/86520</span><p>Psicoterapia online e grupos de cuidado emocional.</p></div>
+      <div><strong>Navegação</strong><a href="index.html#inicio">Início</a><a href="index.html#especialidades">Especialidades</a><a href="index.html#atendimento">Atendimento</a><a href="grupos.html">Grupos terapêuticos</a><a href="index.html#sobre">Sobre mim</a></div>
+      <div><strong>Contato</strong><a href="https://wa.me/5521997652825" target="_blank" rel="noopener noreferrer">WhatsApp</a><span>Atendimento online Brasil e exterior</span></div>
+    </div>
+    <div class="footer-bottom"><div class="container"><p>© 2026 Sara Rebouças. Todos os direitos reservados.</p></div></div>
+  </footer>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document.documentElement.classList.add("js-ready");
+
+      const bar = document.querySelector(".progress-bar");
+      const elements = document.querySelectorAll(".reveal");
+      const buttons = document.querySelectorAll(".btn, .header-cta, .mobile-sticky-cta");
+
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.08,
+            rootMargin: "0px 0px -3% 0px"
+          }
+        );
+
+        elements.forEach(function (element, index) {
+          element.style.transitionDelay = (index % 3) * 90 + "ms";
+          observer.observe(element);
+        });
+      } else {
+        elements.forEach(function (element) {
+          element.classList.add("is-visible");
+        });
+      }
+
+      window.setTimeout(function () {
+        elements.forEach(function (element) {
+          element.classList.add("is-visible");
+        });
+      }, 1000);
+
+      buttons.forEach(function (button) {
+        button.addEventListener("pointermove", function (event) {
+          const rect = button.getBoundingClientRect();
+          button.style.setProperty("--mouse-x", event.clientX - rect.left + "px");
+          button.style.setProperty("--mouse-y", event.clientY - rect.top + "px");
+        });
+      });
+
+      function updateProgress() {
+        if (!bar) return;
+
+        const total = document.documentElement.scrollHeight - window.innerHeight;
+        const percentage = total > 0 ? (window.scrollY / total) * 100 : 0;
+        bar.style.width = percentage + "%";
+      }
+
+      updateProgress();
+      window.addEventListener("scroll", updateProgress, { passive: true });
+      window.addEventListener("resize", updateProgress);
+    });
+  </script>
+</body>
+</html>
