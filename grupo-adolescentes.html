@@ -19,7 +19,110 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet"/>
 
   <!-- Usa exatamente a mesma identidade visual e os mesmos efeitos da página de Finanças -->
-  <link href="grupo-financas-premium.css" rel="stylesheet"/>
+  <link href="grupo-financas-premium.css?v=20260803-2" rel="stylesheet"/>
+
+
+  <!-- Correções específicas destas páginas: mantém a identidade do CSS Premium -->
+  <style>
+    /* Evita blocos vazios quando o navegador interno do Instagram atrasa o JavaScript. */
+    .reveal.is-visible,
+    .anim-hero-copy.is-visible,
+    .anim-hero-video.is-visible,
+    .anim-title.is-visible,
+    .anim-card.is-visible,
+    .anim-timeline.is-visible,
+    .anim-testimonial-left.is-visible,
+    .anim-testimonial-right.is-visible {
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+
+    /* A foto não pode herdar estado invisível da animação. */
+    .about-image,
+    .about-image.is-visible {
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+
+    .about-image img {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      height: auto !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      object-fit: cover;
+    }
+
+    /* Impede alturas mínimas herdadas de criarem grandes áreas vazias. */
+    .story,
+    .impact,
+    .comparison,
+    .future,
+    .method,
+    .experience,
+    .testimonials,
+    .about,
+    .offer,
+    .faq,
+    .final-cta,
+    .cta-band,
+    .cta-band-light,
+    .cta-band-dark,
+    .urgency {
+      min-height: 0 !important;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding-bottom: 96px;
+      }
+
+      .hero,
+      .story,
+      .impact,
+      .comparison,
+      .future,
+      .method,
+      .experience,
+      .testimonials,
+      .about,
+      .offer,
+      .faq,
+      .final-cta {
+        min-height: 0 !important;
+      }
+
+      .about-grid {
+        align-items: start;
+      }
+
+      .about-image {
+        min-height: 0 !important;
+        height: auto !important;
+      }
+
+      .mobile-sticky-cta {
+        position: fixed !important;
+        left: 16px !important;
+        right: 16px !important;
+        bottom: calc(14px + env(safe-area-inset-bottom)) !important;
+        width: auto !important;
+        max-width: 680px;
+        margin: 0 auto;
+        z-index: 9999 !important;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+      }
+    }
+  </style>
+
 </head>
 
 <body>
@@ -747,7 +850,10 @@ document.addEventListener("DOMContentLoaded", function () {
     depoimento.style.setProperty("--anim-delay", index * 100 + "ms");
   });
 
+  /* Todo elemento marcado com reveal precisa ser observado.
+     Antes, a foto e alguns blocos permaneciam invisíveis. */
   const elementosAnimados = document.querySelectorAll(
+    ".reveal, " +
     ".anim-hero-copy, " +
     ".anim-hero-video, " +
     ".anim-title, " +
@@ -767,8 +873,9 @@ document.addEventListener("DOMContentLoaded", function () {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
             entry.target.classList.add("is-visible");
-          } else {
-            entry.target.classList.remove("is-visible");
+            /* Mantém o conteúdo visível depois da primeira entrada.
+               Isso evita sumiços no navegador interno do Instagram. */
+            observer.unobserve(entry.target);
           }
         });
       },
@@ -784,6 +891,36 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     elementosAnimados.forEach(function (elemento) {
       elemento.classList.add("is-visible");
+    });
+  }
+
+  /* Segurança para Safari/Instagram: nunca deixa conteúdo invisível indefinidamente. */
+  window.setTimeout(function () {
+    elementosAnimados.forEach(function (elemento) {
+      elemento.classList.add("is-visible");
+    });
+  }, 1200);
+
+  /* Se o nome da foto mudou, tenta os nomes já usados no projeto. */
+  const fotoSobre = document.querySelector(".about-image img");
+  if (fotoSobre) {
+    const opcoesDeFoto = [
+      "./imagens/sara-psi.png",
+      "./imagens/sara-cafeteria02.png",
+      "./imagens/sara.png",
+      "./imagens/Sara.png"
+    ];
+    let tentativaFoto = 0;
+
+    fotoSobre.addEventListener("error", function () {
+      tentativaFoto += 1;
+      if (tentativaFoto < opcoesDeFoto.length) {
+        fotoSobre.src = opcoesDeFoto[tentativaFoto];
+      } else {
+        /* Sem arquivo disponível, remove apenas a caixa vazia. */
+        const caixa = fotoSobre.closest(".about-image");
+        if (caixa) caixa.style.display = "none";
+      }
     });
   }
 
