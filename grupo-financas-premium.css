@@ -1849,3 +1849,14 @@ section{
     min-height: auto !important;
   }
 }
+/* Espaçamento correto no título principal */
+.hero h1 em {
+  display: inline-block;
+}
+
+@media (max-width: 640px) {
+  .hero h1 em {
+    display: block;
+    margin-top: 10px;
+  }
+}
