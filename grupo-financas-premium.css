@@ -1754,20 +1754,8 @@ video {
     object-fit: cover;
   }
 
-  .reveal,
-  .anim-hero-copy,
-  .anim-hero-video,
-  .anim-title,
-  .anim-card,
-  .anim-timeline,
-  .anim-testimonial-left,
-  .anim-testimonial-right {
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: none !important;
-  }
-}
-
+   }
+   
 /* =========================================================
    CORREÇÃO FINAL — ANIMAÇÕES, INVESTIMENTO E BOTÕES
    ========================================================= */
@@ -2501,5 +2489,41 @@ video {
   .anim-testimonial-right {
     opacity: 1 !important;
     transform: none !important;
+  }
+}
+
+/* BOTÃO FLUTUANTE — CORREÇÃO FINAL */
+@media (max-width: 640px) {
+  body {
+    padding-bottom: 95px;
+  }
+
+  .mobile-sticky-cta {
+    position: fixed !important;
+    left: 14px !important;
+    right: 14px !important;
+    bottom: calc(12px + env(safe-area-inset-bottom)) !important;
+    width: auto !important;
+    min-height: 58px;
+    z-index: 99999 !important;
+
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    padding: 15px 20px;
+    border-radius: 999px;
+    background: linear-gradient(
+      135deg,
+      var(--wine),
+      var(--wine-dark)
+    );
+    color: #ffffff !important;
+    font-size: 16px;
+    font-weight: 800;
+    text-align: center;
+    text-decoration: none;
+
+    box-shadow: 0 18px 42px rgba(47, 10, 38, 0.38);
   }
 }
