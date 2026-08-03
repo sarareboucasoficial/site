@@ -2527,3 +2527,33 @@ video {
     box-shadow: 0 18px 42px rgba(47, 10, 38, 0.38);
   }
 }
+
+/* ANIMAÇÕES AO ROLAR A PÁGINA */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.8s ease var(--anim-delay, 0ms),
+    transform 0.8s ease var(--anim-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Variações opcionais */
+.reveal-left {
+  transform: translateX(-35px);
+}
+
+.reveal-right {
+  transform: translateX(35px);
+}
+
+.reveal-left.is-visible,
+.reveal-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
