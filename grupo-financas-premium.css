@@ -2557,3 +2557,24 @@ video {
   opacity: 1;
   transform: translateX(0);
 }
+
+@media (max-width: 680px) {
+  .story {
+    padding: 48px 0 !important;
+  }
+
+  .story-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+
+  .story-title {
+    position: static !important;
+    top: auto !important;
+  }
+
+  .story-list {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
