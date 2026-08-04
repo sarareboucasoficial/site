@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://sarareboucas.com.br/sitemap.xml
