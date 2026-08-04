@@ -29,7 +29,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=20260804-2">
 
   <script type="application/ld+json">
   {
@@ -46,7 +46,7 @@
           "@sarareboucas.psi"
         ],
         "url": "https://sarareboucas.com.br/",
-        "image": "https://sarareboucas.com.br/imagens/foto-hero.png.png",
+        "image": "https://sarareboucas.com.br/imagens/foto-hero.png",
         "jobTitle": "Psicóloga Clínica",
         "description": "Sara Rebouças é psicóloga clínica, CRP-RJ 05/86520, com atendimento psicológico online para adolescentes, adultos e casais no Brasil e no exterior.",
         "identifier": {
@@ -704,6 +704,19 @@
 
   <script>
 document.addEventListener("DOMContentLoaded", function () {
+  // Proteção contra conteúdo duplicado no bloco inicial.
+  const heroCopyCleanup = document.querySelector(".hero-copy");
+
+  if (heroCopyCleanup) {
+    [".hero-benefits", ".hero-actions", ".trust-row"].forEach(function (selector) {
+      const repeatedBlocks = heroCopyCleanup.querySelectorAll(selector);
+
+      repeatedBlocks.forEach(function (block, index) {
+        if (index > 0) block.remove();
+      });
+    });
+  }
+
   const progressBar = document.querySelector(".progress-bar");
 
   const heroCopy = document.querySelector(".hero-copy");
