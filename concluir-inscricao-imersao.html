@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Concluir inscrição | Imersão Metanoia</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --wine-dark: #350c27;
+      --wine: #6f123f;
+      --magenta: #d42773;
+      --coral: #f05e43;
+      --gold: #f5b73d;
+      --cream: #fff4e9;
+      --white: #ffffff;
+      --ink: #2b1621;
+      --muted: #715d67;
+      --line: rgba(83, 20, 55, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 32px 18px;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(245,183,61,.22), transparent 27%),
+        radial-gradient(circle at 90% 85%, rgba(240,94,67,.24), transparent 28%),
+        linear-gradient(135deg, #26091d, #58113e 55%, #7a174a);
+      font-family: "DM Sans", sans-serif;
+    }
+
+    .page { width: min(760px, 100%); }
+
+    .brand {
+      margin-bottom: 18px;
+      color: rgba(255,255,255,.86);
+      text-align: center;
+    }
+
+    .brand strong,
+    .brand span { display: block; }
+
+    .brand strong {
+      font-family: "Playfair Display", serif;
+      font-size: 24px;
+    }
+
+    .brand span {
+      margin-top: 4px;
+      color: #ffd783;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .card {
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 30px;
+      background: rgba(255,255,255,.96);
+      box-shadow: 0 36px 100px rgba(0,0,0,.34);
+    }
+
+    .top {
+      padding: 38px 38px 32px;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 85% 15%, rgba(245,183,61,.22), transparent 25%),
+        linear-gradient(135deg, var(--wine-dark), var(--wine));
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 11px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      color: #ffd783;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 18px 0 14px;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(38px, 7vw, 58px);
+      line-height: 1;
+      letter-spacing: -.035em;
+    }
+
+    .top p {
+      margin: 0;
+      color: rgba(255,255,255,.76);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .body { padding: 34px 38px 38px; }
+
+    .summary {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--cream);
+    }
+
+    .summary span,
+    .summary strong { display: block; }
+
+    .summary span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .summary strong {
+      margin-top: 4px;
+      font-size: 19px;
+    }
+
+    .price {
+      color: var(--wine);
+      font-family: "Playfair Display", serif;
+      font-size: 48px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .steps {
+      display: grid;
+      gap: 14px;
+      margin: 28px 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .steps li {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 12px;
+      align-items: start;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .steps span {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--magenta), var(--coral));
+      font-weight: 800;
+    }
+
+    .buttons {
+      display: grid;
+      gap: 12px;
+    }
+
+    .btn {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 24px;
+      border-radius: 999px;
+      font-weight: 800;
+      text-align: center;
+      text-decoration: none;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .btn:hover { transform: translateY(-3px); }
+
+    .btn-pay {
+      color: #2c160c;
+      background: linear-gradient(135deg, #ffd55a, var(--gold), #f79d24);
+      box-shadow: 0 18px 40px rgba(245,183,61,.28);
+    }
+
+    .btn-whatsapp {
+      color: var(--white);
+      background: linear-gradient(135deg, #1fa866, #128c55);
+      box-shadow: 0 18px 40px rgba(18,140,85,.22);
+    }
+
+    .notice {
+      margin: 22px 0 0;
+      padding: 16px 18px;
+      border-left: 4px solid var(--coral);
+      border-radius: 10px;
+      background: #fff3ef;
+      color: #6b4b55;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .error {
+      display: none;
+      margin-top: 18px;
+      padding: 16px;
+      border-radius: 12px;
+      color: #6b152d;
+      background: #ffe8ee;
+      font-weight: 700;
+    }
+
+    @media (max-width: 580px) {
+      body { padding: 18px 12px; }
+
+      .top,
+      .body {
+        padding-left: 22px;
+        padding-right: 22px;
+      }
+
+      .summary { grid-template-columns: 1fr; }
+
+      .price { font-size: 42px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="brand">
+      <strong>Sara Rebouças</strong>
+      <span>Imersão Metanoia</span>
+    </div>
+
+    <section class="card">
+      <div class="top">
+        <span class="badge">Última etapa da inscrição</span>
+        <h1>Sua ficha foi recebida.</h1>
+        <p>
+          Agora realize o pagamento e, em seguida, envie o comprovante pelo WhatsApp
+          para que sua vaga seja confirmada.
+        </p>
+      </div>
+
+      <div class="body">
+        <div class="summary">
+          <div>
+            <span>Opção selecionada</span>
+            <strong id="optionName">Carregando...</strong>
+          </div>
+          <div class="price" id="price">—</div>
+        </div>
+
+        <ol class="steps">
+          <li>
+            <span>1</span>
+            <div>Clique no botão amarelo e conclua o pagamento no Mercado Pago.</div>
+          </li>
+          <li>
+            <span>2</span>
+            <div>Depois do pagamento, volte para esta página.</div>
+          </li>
+          <li>
+            <span>3</span>
+            <div>Clique em “Já paguei” e envie o comprovante pelo WhatsApp.</div>
+          </li>
+        </ol>
+
+        <div class="buttons">
+          <a class="btn btn-pay" id="paymentButton" href="#" target="_blank" rel="noopener noreferrer">
+            Realizar pagamento
+          </a>
+
+          <a class="btn btn-whatsapp" id="whatsappButton" href="#" target="_blank" rel="noopener noreferrer">
+            Já paguei — enviar comprovante
+          </a>
+        </div>
+
+        <p class="notice">
+          <strong>Importante:</strong> o envio do formulário não confirma a vaga.
+          A inscrição será considerada concluída somente após a identificação do pagamento
+          e o recebimento do comprovante pelo WhatsApp.
+        </p>
+
+        <div class="error" id="errorMessage">
+          Não foi possível identificar a opção escolhida. Volte ao formulário e envie novamente.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const options = {
+      "47": {
+        name: "Imersão Metanoia — ingresso sem almoço",
+        price: "R$ 47",
+        paymentUrl: "https://mpago.la/1Jz8d5s",
+        whatsappText:
+          "Olá! Preenchi a ficha de inscrição e realizei o pagamento da Imersão Metanoia.%0A%0A" +
+          "Nome completo:%0A" +
+          "Nome do titular do pagamento:%0A" +
+          "Valor pago: R$ 47%0A" +
+          "Opção: somente imersão%0A%0A" +
+          "Estou enviando o comprovante para confirmação da minha vaga."
+      },
+      "73": {
+        name: "Imersão Metanoia — ingresso com almoço e Guaravita",
+        price: "R$ 73",
+        paymentUrl: "https://mpago.la/1dXcrr1",
+        whatsappText:
+          "Olá! Preenchi a ficha de inscrição e realizei o pagamento da Imersão Metanoia.%0A%0A" +
+          "Nome completo:%0A" +
+          "Nome do titular do pagamento:%0A" +
+          "Valor pago: R$ 73%0A" +
+          "Opção: imersão com almoço e Guaravita%0A%0A" +
+          "Estou enviando o comprovante para confirmação da minha vaga e da reserva do almoço."
+      }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const selected = options[params.get("opcao")];
+
+    const optionName = document.getElementById("optionName");
+    const price = document.getElementById("price");
+    const paymentButton = document.getElementById("paymentButton");
+    const whatsappButton = document.getElementById("whatsappButton");
+    const errorMessage = document.getElementById("errorMessage");
+
+    if (selected) {
+      optionName.textContent = selected.name;
+      price.textContent = selected.price;
+      paymentButton.href = selected.paymentUrl;
+      paymentButton.textContent = `Pagar ${selected.price} no Mercado Pago`;
+      whatsappButton.href = `https://wa.me/5521997652825?text=${selected.whatsappText}`;
+    } else {
+      optionName.textContent = "Opção não identificada";
+      price.textContent = "—";
+      paymentButton.style.display = "none";
+      whatsappButton.style.display = "none";
+      errorMessage.style.display = "block";
+    }
+  </script>
+</body>
+</html>
