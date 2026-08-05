@@ -1559,6 +1559,74 @@ p {
     padding-bottom: 78px;
   }
 
+  .hero-visual {
+  min-height: 570px;
+  max-width: 470px;
+  width: 100%;
+  margin-inline: auto;
+}
+
+.hero-photo-frame {
+  inset: 35px 8px 25px;
+  border-radius: 45% 45% 26px 26px;
+}
+
+.hero-person {
+  width: 118%;
+  height: 90%;
+}
+
+.hero-date-stamp {
+  left: 0;
+  padding: 15px 18px;
+}
+
+.hero-date-stamp strong {
+  font-size: 55px;
+}
+
+.hero-tag-one {
+  top: 170px;
+  right: -3px;
+}
+
+.hero-tag-two {
+  top: 220px;
+  right: -3px;
+}
+
+.hero-tag-three {
+  top: 270px;
+  right: 10px;
+}
+
+.hero-event-note {
+  left: 0;
+  bottom: 16px;
+}
+
+.hero-price-seal {
+  right: 0;
+  bottom: 18px;
+  width: 108px;
+  height: 108px;
+}
+
+.hero-handwritten {
+  right: 20px;
+  bottom: 118px;
+  font-size: 34px;
+}
+
+.metanoia-marquee {
+  padding: 13px 0;
+}
+
+.metanoia-marquee span {
+  padding: 0 15px;
+  font-size: 15px;
+}
+
   .container {
     width: min(100% - 28px, 1180px);
   }
@@ -1764,6 +1832,287 @@ p {
   }
 }
 
+/* HERO VISUAL METANOIA */
+
+.hero-visual {
+  position: relative;
+  min-height: 650px;
+  isolation: isolate;
+}
+
+.hero-photo-frame {
+  position: absolute;
+  inset: 20px 28px 20px 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: 48% 48% 28px 28px;
+  background:
+    radial-gradient(circle at 50% 22%, rgba(255, 213, 90, .26), transparent 27%),
+    linear-gradient(155deg, #a72966 0%, #711742 48%, #330b26 100%);
+  box-shadow:
+    0 50px 110px rgba(0, 0, 0, .42),
+    inset 0 1px 0 rgba(255, 255, 255, .18);
+}
+
+.hero-photo-frame::before {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, .13);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.hero-photo-frame::after {
+  content: "";
+  position: absolute;
+  z-index: 4;
+  inset: auto 0 0;
+  height: 42%;
+  background: linear-gradient(to top, rgba(35, 8, 27, .92), transparent);
+  pointer-events: none;
+}
+
+.hero-background-word {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  z-index: 0;
+  color: rgba(255, 255, 255, .08);
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(68px, 7vw, 116px);
+  font-weight: 800;
+  letter-spacing: -.08em;
+  line-height: .8;
+  writing-mode: vertical-rl;
+  transform: translateX(-50%) rotate(180deg);
+  user-select: none;
+}
+
+.hero-photo-light {
+  position: absolute;
+  z-index: 0;
+  width: 430px;
+  height: 430px;
+  top: 80px;
+  left: 50%;
+  border-radius: 50%;
+  background: rgba(255, 192, 86, .27);
+  filter: blur(75px);
+  transform: translateX(-50%);
+}
+
+.hero-person {
+  position: absolute;
+  z-index: 2;
+  width: 108%;
+  max-width: none;
+  height: 94%;
+  left: 50%;
+  bottom: 0;
+  object-fit: contain;
+  object-position: center bottom;
+  filter: drop-shadow(0 28px 26px rgba(18, 3, 13, .32));
+  transform: translateX(-50%);
+}
+
+.hero-handwritten {
+  position: absolute;
+  z-index: 6;
+  right: 24px;
+  bottom: 32px;
+  color: #ffd783;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(30px, 3vw, 48px);
+  font-style: italic;
+  font-weight: 700;
+  line-height: .9;
+  text-align: right;
+  transform: rotate(-5deg);
+  text-shadow: 0 8px 25px rgba(34, 6, 23, .46);
+}
+
+.hero-date-stamp {
+  position: absolute;
+  z-index: 8;
+  top: 0;
+  left: -10px;
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 18px 22px;
+  border: 4px solid var(--wine-dark);
+  border-radius: 20px;
+  color: #2b160c;
+  background: linear-gradient(135deg, #ffe27f, #f5b73d);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, .30);
+  transform: rotate(-5deg);
+}
+
+.hero-date-stamp strong {
+  font-family: "Playfair Display", serif;
+  font-size: 68px;
+  line-height: .74;
+  letter-spacing: -.08em;
+}
+
+.hero-date-stamp div {
+  padding-bottom: 2px;
+}
+
+.hero-date-stamp span,
+.hero-date-stamp small {
+  display: block;
+  font-weight: 800;
+}
+
+.hero-date-stamp span {
+  font-size: 11px;
+  letter-spacing: .1em;
+}
+
+.hero-date-stamp small {
+  margin-top: 2px;
+  font-size: 18px;
+}
+
+.hero-floating-tag {
+  position: absolute;
+  z-index: 9;
+  padding: 10px 16px;
+  border: 2px solid rgba(53, 12, 39, .8);
+  border-radius: 999px;
+  color: var(--wine-dark);
+  background: #fff8f2;
+  box-shadow: 0 13px 30px rgba(0, 0, 0, .25);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.hero-tag-one {
+  top: 148px;
+  right: -15px;
+  transform: rotate(6deg);
+}
+
+.hero-tag-two {
+  top: 205px;
+  right: -32px;
+  color: var(--white);
+  background: var(--coral);
+  transform: rotate(-3deg);
+}
+
+.hero-tag-three {
+  top: 262px;
+  right: 5px;
+  color: #2c160c;
+  background: var(--gold);
+  transform: rotate(5deg);
+}
+
+.hero-price-seal {
+  position: absolute;
+  z-index: 10;
+  right: -8px;
+  bottom: 28px;
+  width: 124px;
+  height: 124px;
+  display: grid;
+  place-content: center;
+  border: 5px solid rgba(53, 12, 39, .78);
+  border-radius: 50%;
+  color: var(--white);
+  background: linear-gradient(145deg, var(--magenta), var(--coral));
+  box-shadow: 0 22px 48px rgba(0, 0, 0, .32);
+  text-align: center;
+  transform: rotate(8deg);
+}
+
+.hero-price-seal::before {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border: 1px dashed rgba(255, 255, 255, .58);
+  border-radius: inherit;
+}
+
+.hero-price-seal span,
+.hero-price-seal strong {
+  position: relative;
+  display: block;
+}
+
+.hero-price-seal span {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.hero-price-seal strong {
+  margin-top: 3px;
+  font-family: "Playfair Display", serif;
+  font-size: 29px;
+}
+
+.hero-event-note {
+  position: absolute;
+  z-index: 9;
+  left: -18px;
+  bottom: 22px;
+  padding: 16px 19px;
+  border: 1px solid rgba(255, 255, 255, .25);
+  border-radius: 17px;
+  color: var(--white);
+  background: rgba(53, 12, 39, .88);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, .28);
+  backdrop-filter: blur(14px);
+  transform: rotate(-3deg);
+}
+
+.hero-event-note span,
+.hero-event-note strong,
+.hero-event-note small {
+  display: block;
+}
+
+.hero-event-note span {
+  color: #ffd783;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+.hero-event-note strong {
+  margin: 3px 0;
+  font-size: 17px;
+}
+
+.hero-event-note small {
+  color: rgba(255, 255, 255, .66);
+}
+
+.hero-visual {
+  animation: heroVisualFloat 5.5s ease-in-out infinite;
+}
+
+@keyframes heroVisualFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(.3deg);
+  }
+
+  50% {
+    transform: translateY(-10px) rotate(-.3deg);
+  }
+}
+
 </style>
 </head>
 
@@ -1848,7 +2197,61 @@ p {
           </p>
         </div>
 
-        <aside class="event-card reveal" aria-label="Informações da Imersão Metanoia">
+        <aside class="hero-visual reveal" aria-label="Imersão Metanoia — Chamados para Cuidar">
+
+  <div class="hero-photo-frame">
+    <span class="hero-background-word" aria-hidden="true">
+      METANOIA
+    </span>
+
+    <div class="hero-photo-light" aria-hidden="true"></div>
+
+    <img
+      class="hero-person"
+      src="./imagens/sara-psi.png"
+      alt="Sara Rebouças, criadora do Método Metanoia"
+    >
+
+    <div class="hero-handwritten">
+      Chamados<br>para cuidar
+    </div>
+  </div>
+
+  <div class="hero-date-stamp">
+    <strong>07</strong>
+
+    <div>
+      <span>SETEMBRO</span>
+      <small>2026</small>
+    </div>
+  </div>
+
+  <div class="hero-floating-tag hero-tag-one">
+    Identidade
+  </div>
+
+  <div class="hero-floating-tag hero-tag-two">
+    Inteligência emocional
+  </div>
+
+  <div class="hero-floating-tag hero-tag-three">
+    Destino
+  </div>
+
+  <div class="hero-price-seal">
+    <span>Ingresso</span>
+    <strong>R$ 47</strong>
+  </div>
+
+  <div class="hero-event-note">
+    <span>Presencial</span>
+    <strong>9h às 18h</strong>
+    <small>Itaboraí • RJ</small>
+  </div>
+
+</aside>
+
+
           <div class="event-card-top">
             <span class="event-number">07</span>
             <div>
@@ -1881,6 +2284,42 @@ p {
         </aside>
       </div>
     </section>
+
+    <section class="metanoia-marquee" aria-label="Fundamentos do Método Metanoia">
+  <div class="metanoia-marquee-track">
+
+    <div class="metanoia-marquee-group">
+      <span>Identidade</span>
+      <b>✦</b>
+      <span>Inteligência emocional</span>
+      <b>✦</b>
+      <span>Destino</span>
+      <b>✦</b>
+      <span>Fé e ciência</span>
+      <b>✦</b>
+      <span>Escuta</span>
+      <b>✦</b>
+      <span>Transformação</span>
+      <b>✦</b>
+    </div>
+
+    <div class="metanoia-marquee-group" aria-hidden="true">
+      <span>Identidade</span>
+      <b>✦</b>
+      <span>Inteligência emocional</span>
+      <b>✦</b>
+      <span>Destino</span>
+      <b>✦</b>
+      <span>Fé e ciência</span>
+      <b>✦</b>
+      <span>Escuta</span>
+      <b>✦</b>
+      <span>Transformação</span>
+      <b>✦</b>
+    </div>
+
+  </div>
+</section>
 
     <!-- CONTAGEM -->
     <section class="countdown-strip" aria-label="Contagem regressiva para a imersão">
@@ -2354,26 +2793,27 @@ p {
           <p>Informações importantes para você participar com clareza.</p>
         </div>
 
-          <div class="faq-list">
-          <details class="reveal">
-            <summary>Preciso ter faculdade de psicologia para fazer a formação de terapeuta?</summary>
-            <p>
-              Não. A Imersão Metanoia foi desenvolvida para terapeutas cristãos e pessoas que
-              desejam atuar no cuidado emocional em seus contextos de serviço, mesmo sem graduação
-              em Psicologia. Você aprenderá um método estruturado, baseado em fundamentos teóricos
-              e práticos, que ampliará sua capacidade de acolher e conduzir pessoas com mais segurança.
-            </p>
-          </details>
+         <div class="faq-list">
 
-        <div class="faq-list">
-          <details class="reveal">
-            <summary>A imersão me habilita para atuar como terapeuta?</summary>
-            <p>
-              Não. A Imersão Metanoia é um encontro introdutório, educativo e experiencial.
-              Ela não constitui formação profissional completa e não habilita o participante
-              para atuar como terapeuta.
-            </p>
-          </details>
+  <details class="reveal">
+    <summary>Preciso ter faculdade de Psicologia para participar da imersão?</summary>
+    <p>
+      Não. A Imersão Metanoia é uma experiência introdutória destinada a pessoas
+      que desejam compreender melhor os fundamentos do cuidado emocional e
+      terapêutico cristão. Não é necessário ter graduação ou experiência prévia
+      para participar. A imersão, entretanto, não constitui formação profissional
+      e não habilita o participante para atuar como psicólogo ou terapeuta.
+    </p>
+  </details>
+
+  <details class="reveal">
+    <summary>A imersão me habilita para atuar como terapeuta?</summary>
+    <p>
+      Não. A Imersão Metanoia é um encontro introdutório, educativo e experiencial.
+      Ela não constitui formação profissional completa e não habilita o participante
+      para atuar como terapeuta.
+    </p>
+  </details>
 
           <details class="reveal">
             <summary>Receberei certificado?</summary>
@@ -2477,7 +2917,7 @@ p {
 
   <a
     class="mobile-sticky-cta"
-    href="https://tally.so/r/pbNO9Z" target="_blank" rel="noopener noreferrer">Garantir vaga • a partir de R$ 47</a>
+    href="https://tally.so/r/pbNO9Z" target="_blank" rel="noopener noreferrer">Garantir minha vaga • R$ 47</a>
 
   <script>
 document.addEventListener("DOMContentLoaded", () => {
@@ -2616,3 +3056,60 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 </body>
 </html>
+
+/* FAIXA ANIMADA */
+
+.metanoia-marquee {
+  position: relative;
+  z-index: 3;
+  overflow: hidden;
+  padding: 17px 0;
+  border-top: 3px solid var(--wine-dark);
+  border-bottom: 3px solid var(--wine-dark);
+  color: var(--wine-dark);
+  background: var(--gold);
+  transform: rotate(-1deg) scale(1.02);
+  transform-origin: center;
+}
+
+.metanoia-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: metanoiaMarquee 28s linear infinite;
+}
+
+.metanoia-marquee-group {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.metanoia-marquee span {
+  padding: 0 22px;
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(16px, 2vw, 23px);
+  font-weight: 800;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.metanoia-marquee b {
+  color: var(--magenta);
+  font-size: 22px;
+}
+
+@keyframes metanoiaMarquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.metanoia-marquee:hover .metanoia-marquee-track {
+  animation-play-state: paused;
+}
+
