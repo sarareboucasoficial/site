@@ -29,7 +29,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=20260804-2">
+  <link rel="stylesheet" href="style.css">
 
   <script type="application/ld+json">
   {
@@ -46,7 +46,7 @@
           "@sarareboucas.psi"
         ],
         "url": "https://sarareboucas.com.br/",
-        "image": "https://sarareboucas.com.br/imagens/foto-hero.png",
+        "image": "https://sarareboucas.com.br/imagens/foto-hero.png.png",
         "jobTitle": "Psicóloga Clínica",
         "description": "Sara Rebouças é psicóloga clínica, CRP-RJ 05/86520, com atendimento psicológico online para adolescentes, adultos e casais no Brasil e no exterior.",
         "identifier": {
@@ -84,24 +84,6 @@
     ]
   }
   </script>
-
-<style>
-/* CORREÇÃO DOS BLOCOS QUE ESTAVAM FICANDO INVISÍVEIS */
-.reveal,
-.anim-hero-copy,
-.anim-hero-video,
-.anim-title,
-.anim-card,
-.anim-timeline,
-.anim-testimonial-left,
-.anim-testimonial-right {
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: none !important;
-}
-</style>
-
-
 </head>
 
 <body>
@@ -119,9 +101,18 @@
       <nav class="main-nav" aria-label="Navegação principal">
         <a href="#inicio">Início</a>
         <a href="#especialidades">Especialidades</a>
-        <a href="#atendimento">Atendimento</a>
+
+        <details class="nav-dropdown">
+          <summary>Psicoterapia</summary>
+          <div class="nav-dropdown-menu">
+            <a href="psicoterapia-infantil-adolescente.html">Crianças e adolescentes</a>
+            <a href="psicoterapia-adultos.html">Adultos</a>
+            <a href="terapia-de-casal.html">Casais</a>
+          </div>
+        </details>
+
         <a href="grupos.html">Grupos</a>
-        <a href="formacao-terapeutas-metanoia.html">Formação</a>
+        <a href="formacao-terapeutas-metanoia.html">Metanoia</a>
         <a href="#sobre">Sobre mim</a>
       </nav>
 
@@ -144,7 +135,7 @@
 
       <div class="container hero-grid">
         
-       <div class="hero-copy">
+        <div class="hero-copy">
   <span class="eyebrow">
     Psicoterapia online • Brasil e exterior
   </span>
@@ -186,7 +177,35 @@
     <span>Brasil e exterior</span>
     <span>Sigilo e ética</span>
   </div>
-</div>
+
+          <ul class="hero-benefits">
+            <li>Atendimento para adolescentes, adultos e casais.</li>
+            <li>Terapia Cognitivo-Comportamental, Terapia do Esquema e Neurociência.</li>
+            <li>Espiritualidade acolhida com ética e responsabilidade profissional.</li>
+          </ul>
+
+          <div class="hero-actions">
+            <a
+              class="btn btn-primary"
+              href="https://wa.me/5521997652825?text=Ol%C3%A1%20Sara.%20Quero%20agendar%20um%20atendimento%20psicol%C3%B3gico."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Quero agendar meu atendimento
+            </a>
+
+            <a class="btn btn-ghost" href="#sobre">
+              Conhecer seu trabalho
+            </a>
+          </div>
+
+          <div class="trust-row">
+            <span>Atendimento online</span>
+            <span>Brasil e exterior</span>
+            <span>Sigilo e ética</span>
+          </div>
+        </div>
+
         <div class="hero-image-wrap">
           <div class="hero-image-glow" aria-hidden="true"></div>
           <img
@@ -722,19 +741,6 @@
 
   <script>
 document.addEventListener("DOMContentLoaded", function () {
-  // Proteção contra conteúdo duplicado no bloco inicial.
-  const heroCopyCleanup = document.querySelector(".hero-copy");
-
-  if (heroCopyCleanup) {
-    [".hero-benefits", ".hero-actions", ".trust-row"].forEach(function (selector) {
-      const repeatedBlocks = heroCopyCleanup.querySelectorAll(selector);
-
-      repeatedBlocks.forEach(function (block, index) {
-        if (index > 0) block.remove();
-      });
-    });
-  }
-
   const progressBar = document.querySelector(".progress-bar");
 
   const heroCopy = document.querySelector(".hero-copy");
