@@ -1,82 +1,138 @@
-export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Método não permitido" });
+const crypto = require('crypto');
+
+module.exports = async function handler(req, res) {
+  const allowedOrigins = new Set([
+    'https://sarareboucas.com.br',
+    'https://www.sarareboucas.com.br'
+  ]);
+
+  const origin = req.headers.origin;
+
+  if (origin && allowedOrigins.has(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
   }
 
-  try {
-    const { opcao } = req.body || {};
+  res.setHeader('Vary', 'Origin');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-    const produtos = {
-      sem_almoco: {
-        title: "Imersão Metanoia — Sem almoço",
-        price: 47
-      },
-      com_almoco: {
-        title: "Imersão Metanoia — Com almoço",
-        price: 73
-      }
-    };
+  if (req.method === 'OPTIONS') {
+    return res.status(204).end();
+  }
 
-    const produto = produtos[opcao];
+  if (req.method !== 'POST') {
+    res.setHeader('Allow', 'POST, OPTIONS');
+    return res.status(405).json({ error: 'Método não permitido.' });
+  }
 
-    if (!produto) {
-      return res.status(400).json({ error: "Opção de ingresso inválida" });
+  const token = process.env.MERCADO_PAGO_ACCESS_TOKEN;
+
+  if (!token) {
+    return res.status(500).json({
+      error: 'Credencial do Mercado Pago não configurada.'
+    });
+  }
+
+  const { opcao } = req.body || {};
+
+  const produtos = {
+    '47': {
+      title: 'Imersão Metanoia — sem almoço',
+      unit_price: 47,
+      description: 'Ingresso para a Imersão Metanoia — 7 de setembro de 2026'
+    },
+
+    '73': {
+      title: 'Imersão Metanoia + almoço',
+      unit_price: 73,
+      description: 'Ingresso para a Imersão Metanoia + almoço — 7 de setembro de 2026'
     }
+  };
 
-    const response = await fetch(
-      "https://api.mercadopago.com/checkout/preferences",
+  const produto = produtos[String(opcao)];
+
+  if (!produto) {
+    return res.status(400).json({
+      error: 'Opção de ingresso inválida.'
+    });
+  }
+
+  const baseUrl = 'https://sarareboucas.com.br';
+
+  const referencia =
+    `metanoia-${opcao}-${Date.now()}-${crypto.randomBytes(4).toString('hex')}`;
+
+  const preference = {
+    items: [
       {
-        method: "POST",
+        id: `imersao-metanoia-${opcao}`,
+        title: produto.title,
+        description: produto.description,
+        quantity: 1,
+        currency_id: 'BRL',
+        unit_price: produto.unit_price
+      }
+    ],
+
+    external_reference: referencia,
+
+    back_urls: {
+      success:
+        `${baseUrl}/concluir-inscricao-imersao.html?opcao=${opcao}&resultado=sucesso`,
+
+      pending:
+        `${baseUrl}/concluir-inscricao-imersao.html?opcao=${opcao}&resultado=pendente`,
+
+      failure:
+        `${baseUrl}/concluir-inscricao-imersao.html?opcao=${opcao}&resultado=erro`
+    },
+
+    auto_return: 'approved',
+
+    statement_descriptor: 'METANOIA',
+
+    metadata: {
+      evento: 'imersao-metanoia-2026',
+      opcao: String(opcao)
+    }
+  };
+
+  try {
+    const mpResponse = await fetch(
+      'https://api.mercadopago.com/checkout/preferences',
+      {
+        method: 'POST',
+
         headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.MERCADO_PAGO_ACCESS_TOKEN}`
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          'X-Idempotency-Key': crypto.randomUUID()
         },
-        body: JSON.stringify({
-          items: [
-            {
-              id: opcao,
-              title: produto.title,
-              quantity: 1,
-              currency_id: "BRL",
-              unit_price: produto.price
-            }
-          ],
 
-          back_urls: {
-            success:
-              "https://sarareboucas.com.br/imersao-confirmada.html",
-            pending:
-              "https://sarareboucas.com.br/imersao-pendente.html",
-            failure:
-              "https://sarareboucas.com.br/imersao-pagamento.html"
-          },
-
-          auto_return: "approved",
-
-          external_reference: `imersao-metanoia-${opcao}-${Date.now()}`
-        })
+        body: JSON.stringify(preference)
       }
     );
 
-    const data = await response.json();
+    const data = await mpResponse.json();
 
-    if (!response.ok) {
-      console.error("Erro Mercado Pago:", data);
-      return res.status(response.status).json({
-        error: "Não foi possível criar o pagamento",
-        details: data
+    if (!mpResponse.ok) {
+      console.error('Mercado Pago:', data);
+
+      return res.status(mpResponse.status).json({
+        error: 'Não foi possível iniciar o pagamento.',
+        detail: data.message || data.error || 'Erro do Mercado Pago.'
       });
     }
 
     return res.status(200).json({
+      preference_id: data.id,
       checkout_url: data.init_point
     });
-
   } catch (error) {
     console.error(error);
 
     return res.status(500).json({
-      error: "Erro interno ao criar pagamento"
+      error: 'Falha ao conectar ao Mercado Pago.'
     });
   }
-}
+};
