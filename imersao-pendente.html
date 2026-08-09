@@ -3,10 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Pagamento em processamento | Imersão Metanoia</title>
 
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
       min-height: 100vh;
@@ -15,19 +20,24 @@
       justify-content: center;
       padding: 30px 20px;
       font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(135deg, #3b0717 0%, #5a1026 55%, #2b0611 100%);
-      color: #fff;
+      background: linear-gradient(
+        135deg,
+        #3b0717 0%,
+        #5a1026 55%,
+        #2b0611 100%
+      );
+      color: #ffffff;
     }
 
     .card {
       width: 100%;
-      max-width: 650px;
+      max-width: 680px;
       padding: 55px 35px;
       text-align: center;
       border-radius: 24px;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(212,175,55,.45);
-      box-shadow: 0 25px 70px rgba(0,0,0,.35);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      box-shadow: 0 25px 70px rgba(0,0,0,0.35);
     }
 
     .icone {
@@ -57,11 +67,12 @@
       font-family: Georgia, "Times New Roman", serif;
       font-size: clamp(32px, 6vw, 48px);
       font-weight: normal;
+      line-height: 1.1;
     }
 
     p {
-      max-width: 520px;
-      margin: auto;
+      max-width: 540px;
+      margin: 0 auto;
       color: #f3e9ec;
       font-size: 17px;
       line-height: 1.7;
@@ -71,7 +82,22 @@
       margin-top: 28px;
       padding: 20px;
       border-radius: 14px;
-      background: rgba(212,175,55,.10);
+      background: rgba(212, 175, 55, 0.10);
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    .destaque strong {
+      color: #d4af37;
+    }
+
+    .aviso {
+      margin-top: 22px;
+      padding: 18px;
+      border-radius: 14px;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      color: #f6e9c1;
+      font-size: 15px;
       line-height: 1.6;
     }
 
@@ -82,8 +108,14 @@
       border-radius: 50px;
       background: #d4af37;
       color: #3b0717;
+      font-size: 17px;
       font-weight: bold;
       text-decoration: none;
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
     }
 
     .assinatura {
@@ -96,31 +128,51 @@
 </head>
 
 <body>
+
   <main class="card">
 
     <div class="icone">⌛</div>
 
-    <div class="metanoia">Imersão Metanoia</div>
+    <div class="metanoia">
+      Imersão Metanoia
+    </div>
 
-    <h1>Seu pagamento está sendo processado</h1>
+    <h1>
+      Seu pagamento está sendo processado
+    </h1>
 
     <p>
-      Está tudo certo por aqui. ✨
-      O Mercado Pago ainda está processando a confirmação do seu pagamento.
+      O Mercado Pago ainda não confirmou o seu pagamento.
+      Por isso, <strong>sua inscrição ainda não está confirmada.</strong>
     </p>
 
     <div class="destaque">
-      Assim que o pagamento for aprovado, sua inscrição poderá ser confirmada.
-      Não é necessário realizar um novo pagamento.
+      <strong>Envie agora o seu comprovante pelo WhatsApp.</strong><br>
+      Assim poderemos identificar seu pagamento e acompanhar a confirmação.
     </div>
 
-    <a class="btn"
-       href="https://sarareboucas.com.br/imersao-metanoia.html">
-      Voltar para a Imersão
+    <div class="aviso">
+      ⚠️ <strong>Importante:</strong> o envio do comprovante não significa
+      necessariamente que o pagamento foi aprovado.
+      Caso o Mercado Pago informe posteriormente que o pagamento
+      <strong>não foi efetivado</strong>, será necessário realizar um novo
+      pagamento para garantir sua inscrição.
+    </div>
+
+    <a
+      class="btn"
+      href="https://wa.me/5521997652825?text=Ol%C3%A1%21%20Fiz%20minha%20inscri%C3%A7%C3%A3o%20para%20a%20Imers%C3%A3o%20Metanoia.%20Meu%20pagamento%20ainda%20est%C3%A1%20sendo%20processado%20pelo%20Mercado%20Pago%20e%20estou%20enviando%20meu%20comprovante%20para%20identifica%C3%A7%C3%A3o."
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      📲 Enviar comprovante pelo WhatsApp
     </a>
 
-    <div class="assinatura">Sara Rebouças</div>
+    <div class="assinatura">
+      Sara Rebouças
+    </div>
 
   </main>
+
 </body>
 </html>
