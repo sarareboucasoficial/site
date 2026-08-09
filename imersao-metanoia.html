@@ -392,33 +392,102 @@
     .event-card-price {
       position: relative;
       z-index: 2;
-      padding: 26px 30px 30px;
+      padding: 24px 24px 26px;
       color: #2b160c;
       background: linear-gradient(135deg, #ffd55a, var(--gold), #f79d24);
     }
 
-    .event-card-price span,
-    .event-card-price strong,
-    .event-card-price small {
+    .event-card-price > span {
       display: block;
-    }
-
-    .event-card-price span {
+      margin-bottom: 14px;
       font-size: 10px;
-      font-weight: 800;
-      letter-spacing: .14em;
+      font-weight: 900;
+      letter-spacing: .15em;
       text-transform: uppercase;
     }
 
-    .event-card-price strong {
-      margin: 4px 0;
+    .event-price-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .event-price-option {
+      padding: 15px 14px;
+      border: 1px solid rgba(43,22,12,.14);
+      border-radius: 16px;
+      background: rgba(255,255,255,.34);
+    }
+
+    .event-price-option small,
+    .event-price-option strong,
+    .event-price-option em {
+      display: block;
+    }
+
+    .event-price-option small {
+      margin-bottom: 4px;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .event-price-option strong {
       font-family: "Playfair Display", serif;
-      font-size: 58px;
+      font-size: 34px;
+      line-height: 1.05;
+    }
+
+    .event-price-option em {
+      margin-top: 5px;
+      font-size: 11px;
+      font-style: normal;
+      font-weight: 700;
+      opacity: .78;
+    }
+
+    .ticket-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 22px 0;
+    }
+
+    .ticket-option {
+      padding: 22px 16px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 20px;
+      background: rgba(255,255,255,.08);
+      text-align: center;
+    }
+
+    .ticket-option.featured {
+      border-color: rgba(245,183,61,.55);
+      background: rgba(245,183,61,.12);
+    }
+
+    .ticket-option span {
+      display: block;
+      color: #ffd783;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    .ticket-option strong {
+      display: block;
+      margin: 7px 0 6px;
+      font-family: "Playfair Display", serif;
+      font-size: 44px;
       line-height: 1;
     }
 
-    .event-card-price small {
-      font-weight: 700;
+    .ticket-option small {
+      display: block;
+      color: rgba(255,255,255,.72);
+      line-height: 1.4;
     }
 
     /* VÍDEO DA IMERSÃO */
@@ -676,6 +745,9 @@
     }
 
     @media (max-width: 760px) {
+      .ticket-options { grid-template-columns: 1fr; }
+      .event-price-options { grid-template-columns: 1fr 1fr; }
+      .event-price-option strong { font-size: 30px; }
       body { padding-bottom: 78px; }
       .container { width: min(100% - 28px, 1180px); }
       .site-header { position: static; }
@@ -836,7 +908,7 @@
           <div class="hero-data">
             <div><span>Data</span><strong>7 de setembro</strong></div>
             <div><span>Horário</span><strong>9h às 18h</strong></div>
-            <div><span>Ingressos</span><strong>R$ 47 / R$ 73</strong></div>
+            <div><span>Ingressos</span><strong>R$ 47 sem almoço • R$ 73 com almoço</strong></div>
           </div>
 
           <div class="hero-actions">
@@ -876,8 +948,18 @@
 
           <div class="event-card-price">
             <span>Investimento</span>
-            <strong>R$ 47 / R$ 73</strong>
-            <small>Sem almoço / com almoço</small>
+            <div class="event-price-options">
+              <div class="event-price-option">
+                <small>Sem almoço</small>
+                <strong>R$ 47</strong>
+                <em>Imersão</em>
+              </div>
+              <div class="event-price-option">
+                <small>Com almoço</small>
+                <strong>R$ 73</strong>
+                <em>Imersão + almoço</em>
+              </div>
+            </div>
           </div>
         </aside>
       </div>
@@ -1145,19 +1227,19 @@
         </div>
 
         <div class="offer-card reveal">
-          <span class="offer-label">Escolha a opção de ingresso no formulário</span>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0;">
-          <div style="padding:20px 14px;border:1px solid rgba(255,255,255,.18);border-radius:20px;background:rgba(255,255,255,.08);text-align:center;">
-            <span style="display:block;color:#ffd783;font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.08em;">Sem almoço</span>
-            <strong style="display:block;font-family:'Playfair Display',serif;font-size:48px;margin:8px 0;">R$ 47</strong>
-            <small style="color:rgba(255,255,255,.7);">Ingresso para a imersão</small>
+          <span class="offer-label">Escolha sua opção de ingresso</span>
+          <div class="ticket-options">
+            <div class="ticket-option">
+              <span>Sem almoço</span>
+              <strong>R$ 47</strong>
+              <small>Participação completa na Imersão Metanoia</small>
+            </div>
+            <div class="ticket-option featured">
+              <span>Com almoço</span>
+              <strong>R$ 73</strong>
+              <small>Participação completa + almoço no local</small>
+            </div>
           </div>
-          <div style="padding:20px 14px;border:1px solid rgba(245,183,61,.55);border-radius:20px;background:rgba(245,183,61,.12);text-align:center;">
-            <span style="display:block;color:#ffd783;font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.08em;">Com almoço</span>
-            <strong style="display:block;font-family:'Playfair Display',serif;font-size:48px;margin:8px 0;">R$ 73</strong>
-            <small style="color:rgba(255,255,255,.7);">Ingresso + almoço no local</small>
-          </div>
-        </div>
           <span class="offer-subtitle">Pagamento único</span>
 
           <ul>
@@ -1280,7 +1362,7 @@
         </p>
 
         <a class="btn btn-gold btn-big btn-pulse" href="https://tally.so/r/pbNO9Z" target="_blank" rel="noopener noreferrer">Quero garantir minha vaga</a>
-        <small>Investimento: R$ 47 • Evento presencial • Vagas limitadas</small>
+        <small>R$ 47 sem almoço • R$ 73 com almoço • Evento presencial • Vagas limitadas</small>
       </div>
     </section>
 
