@@ -1,57 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
   <url>
     <loc>https://sarareboucas.com.br/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+
   <url>
-    <loc>https://sarareboucas.com.br/psicologa-online.html</loc>
-    <lastmod>2026-07-25</lastmod>
+    <loc>https://sarareboucas.com.br/sara-reboucas.html</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://sarareboucas.com.br/psicoterapia-infantil-adolescente.html</loc>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
-    <loc>https://sarareboucas.com.br/psicologa-ansiedade.html</loc>
-    <lastmod>2026-07-25</lastmod>
+    <loc>https://sarareboucas.com.br/psicoterapia-adultos.html</loc>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://sarareboucas.com.br/psicologa-traumas.html</loc>
-    <lastmod>2026-07-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+
   <url>
     <loc>https://sarareboucas.com.br/terapia-de-casal.html</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
-    <loc>https://sarareboucas.com.br/psicologa-adolescentes.html</loc>
-    <lastmod>2026-07-25</lastmod>
+    <loc>https://sarareboucas.com.br/grupos.html</loc>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
+
   <url>
-    <loc>https://sarareboucas.com.br/terapia-cognitivo-comportamental.html</loc>
-    <lastmod>2026-07-25</lastmod>
+    <loc>https://sarareboucas.com.br/formacao-terapeutas-metanoia.html</loc>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
-    <loc>https://sarareboucas.com.br/psicologa-itaborai.html</loc>
-    <lastmod>2026-07-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://sarareboucas.com.br/imersao-metanoia.html</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
-  <url>
-    <loc>https://sarareboucas.com.br/psicologa-rio-de-janeiro.html</loc>
-    <lastmod>2026-07-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+
 </urlset>
