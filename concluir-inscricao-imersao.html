@@ -404,14 +404,14 @@
 
     function setWhatsapp() {
 
-      const text = encodeURIComponent(
-        `Olá! Meu pagamento da Imersão Metanoia foi aprovado.\n\n` +
-        `Valor: R$ 47\n` +
-        (paymentId
-          ? `Pagamento Mercado Pago: ${paymentId}\n`
-          : '') +
-        `\nEstou enviando a confirmação da minha inscrição.`
-      );
+     const text = encodeURIComponent(
+  `Olá! Minha inscrição na Imersão Metanoia foi confirmada.\n\n` +
+  `Valor: R$ 47\n` +
+  (paymentId
+    ? `ID do pagamento Mercado Pago: ${paymentId}\n`
+    : '') +
+  `\nEstou enviando esta mensagem para confirmar minha participação.`
+);
 
       whatsappButton.href =
         `https://wa.me/5521997652825?text=${text}`;
