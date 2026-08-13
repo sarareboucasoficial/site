@@ -34,18 +34,20 @@ module.exports = async function handler(req, res) {
   }
 
   const paymentId =
-    req.query.payment_id || req.query.collection_id;
+    req.query.payment_id ||
+    req.query.collection_id;
 
-  if (!paymentId || !/^\d+$/.test(String(paymentId))) {
+  if (!paymentId) {
     return res.status(400).json({
-      error: 'Pagamento não identificado.'
+      error: 'ID do pagamento não informado.'
     });
   }
 
   try {
     const mpResponse = await fetch(
-      `https://api.mercadopago.com/v1/payments/${paymentId}`,
+      `https://api.mercadopago.com/v1/payments/${encodeURIComponent(paymentId)}`,
       {
+        method: 'GET',
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -55,32 +57,38 @@ module.exports = async function handler(req, res) {
     const data = await mpResponse.json();
 
     if (!mpResponse.ok) {
+      console.error('Mercado Pago:', data);
+
       return res.status(mpResponse.status).json({
-        error: 'Não foi possível verificar o pagamento.'
+        error: 'Não foi possível verificar o pagamento.',
+        detail: data.message || data.error || 'Erro do Mercado Pago.'
       });
     }
 
-    const valor = Number(data.transaction_amount || 0);
+    const pagamentoMetanoia =
+      data.metadata?.evento === 'imersao-metanoia-2026';
 
-    const opcao =
-      valor === 73 ? '73' :
-      valor === 47 ? '47' :
-      null;
+    const valorCorreto =
+      Number(data.transaction_amount) === 47;
 
     return res.status(200).json({
       id: data.id,
       status: data.status,
       status_detail: data.status_detail,
-      amount: valor,
-      opcao,
-      external_reference: data.external_reference || null
+      aprovado:
+        data.status === 'approved' &&
+        pagamentoMetanoia &&
+        valorCorreto,
+      valor: data.transaction_amount,
+      referencia: data.external_reference || null,
+      evento: data.metadata?.evento || null
     });
 
   } catch (error) {
     console.error(error);
 
     return res.status(500).json({
-      error: 'Falha ao consultar o pagamento.'
+      error: 'Falha ao consultar o Mercado Pago.'
     });
   }
 };

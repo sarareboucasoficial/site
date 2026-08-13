@@ -5,65 +5,391 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Concluir inscrição | Imersão Metanoia</title>
   <meta name="robots" content="noindex, nofollow">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
   <style>
-    :root{--wine-dark:#350c27;--wine:#6f123f;--magenta:#d42773;--coral:#f05e43;--gold:#f5b73d;--cream:#fff4e9;--white:#fff;--ink:#2b1621;--muted:#715d67;--line:rgba(83,20,55,.14);--green:#168a55}
-    *{box-sizing:border-box} body{margin:0;min-height:100vh;display:grid;place-items:center;padding:32px 18px;color:var(--ink);background:radial-gradient(circle at 10% 10%,rgba(245,183,61,.22),transparent 27%),radial-gradient(circle at 90% 85%,rgba(240,94,67,.24),transparent 28%),linear-gradient(135deg,#26091d,#58113e 55%,#7a174a);font-family:"DM Sans",sans-serif}.page{width:min(760px,100%)}.brand{margin-bottom:18px;color:rgba(255,255,255,.86);text-align:center}.brand strong,.brand span{display:block}.brand strong{font-family:"Playfair Display",serif;font-size:24px}.brand span{margin-top:4px;color:#ffd783;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.card{overflow:hidden;border:1px solid rgba(255,255,255,.18);border-radius:30px;background:rgba(255,255,255,.97);box-shadow:0 36px 100px rgba(0,0,0,.34)}.top{padding:38px 38px 32px;color:var(--white);background:radial-gradient(circle at 85% 15%,rgba(245,183,61,.22),transparent 25%),linear-gradient(135deg,var(--wine-dark),var(--wine))}.badge{display:inline-block;padding:8px 11px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.08);color:#ffd783;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}h1{margin:18px 0 14px;font-family:"Playfair Display",serif;font-size:clamp(38px,7vw,58px);line-height:1;letter-spacing:-.035em}.top p{margin:0;color:rgba(255,255,255,.78);font-size:17px;line-height:1.65}.body{padding:34px 38px 38px}.summary{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;padding:22px;border:1px solid var(--line);border-radius:20px;background:var(--cream)}.summary span,.summary strong{display:block}.summary span{color:var(--muted);font-size:13px}.summary strong{margin-top:4px;font-size:19px}.price{color:var(--wine);font-family:"Playfair Display",serif;font-size:48px;font-weight:700;white-space:nowrap}.status-box{display:none;margin:24px 0;padding:20px;border-radius:18px;line-height:1.6}.status-box.show{display:block}.status-success{background:#e8f7ef;border:1px solid #b9e5cc;color:#145a38}.status-pending{background:#fff7df;border:1px solid #f1d88b;color:#6c5212}.status-error{background:#ffecef;border:1px solid #efbcc7;color:#781b32}.status-box strong{display:block;margin-bottom:4px;font-size:18px}.steps{display:grid;gap:14px;margin:28px 0;padding:0;list-style:none}.steps li{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start;color:var(--muted);line-height:1.55}.steps span{width:34px;height:34px;display:grid;place-items:center;border-radius:50%;color:var(--white);background:linear-gradient(135deg,var(--magenta),var(--coral));font-weight:800}.buttons{display:grid;gap:12px}.btn{border:0;min-height:58px;display:flex;align-items:center;justify-content:center;padding:16px 24px;border-radius:999px;font:inherit;font-weight:800;text-align:center;text-decoration:none;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease}.btn:hover{transform:translateY(-2px)}.btn-pay{color:#2c160c;background:linear-gradient(135deg,#ffd55a,var(--gold),#f79d24);box-shadow:0 18px 40px rgba(245,183,61,.28)}.btn-whatsapp{color:#fff;background:linear-gradient(135deg,#1fa866,#128c55);box-shadow:0 18px 40px rgba(18,140,85,.22)}.btn-secondary{color:var(--wine);background:#fff;border:1px solid var(--line)}.btn[disabled]{opacity:.65;cursor:wait;transform:none}.notice{margin:22px 0 0;padding:16px 18px;border-left:4px solid var(--coral);border-radius:10px;background:#fff3ef;color:#6b4b55;font-size:13px;line-height:1.6}.error{display:none;margin-top:18px;padding:16px;border-radius:12px;color:#6b152d;background:#ffe8ee;font-weight:700}.error.show{display:block}.hidden{display:none!important}@media(max-width:580px){body{padding:18px 12px}.top,.body{padding-left:22px;padding-right:22px}.summary{grid-template-columns:1fr}.price{font-size:42px}}
+    :root{
+      --wine-dark:#350c27;
+      --wine:#6f123f;
+      --magenta:#d42773;
+      --coral:#f05e43;
+      --gold:#f5b73d;
+      --cream:#fff4e9;
+      --white:#fff;
+      --ink:#2b1621;
+      --muted:#715d67;
+      --line:rgba(83,20,55,.14);
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      padding:32px 18px;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 10% 10%,rgba(245,183,61,.22),transparent 27%),
+        radial-gradient(circle at 90% 85%,rgba(240,94,67,.24),transparent 28%),
+        linear-gradient(135deg,#26091d,#58113e 55%,#7a174a);
+      font-family:"DM Sans",sans-serif;
+    }
+
+    .page{width:min(760px,100%)}
+
+    .brand{
+      margin-bottom:18px;
+      color:rgba(255,255,255,.86);
+      text-align:center;
+    }
+
+    .brand strong,.brand span{display:block}
+
+    .brand strong{
+      font-family:"Playfair Display",serif;
+      font-size:24px;
+    }
+
+    .brand span{
+      margin-top:4px;
+      color:#ffd783;
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    .card{
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:30px;
+      background:rgba(255,255,255,.97);
+      box-shadow:0 36px 100px rgba(0,0,0,.34);
+    }
+
+    .top{
+      padding:38px 38px 32px;
+      color:var(--white);
+      background:
+        radial-gradient(circle at 85% 15%,rgba(245,183,61,.22),transparent 25%),
+        linear-gradient(135deg,var(--wine-dark),var(--wine));
+    }
+
+    .badge{
+      display:inline-block;
+      padding:8px 11px;
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      color:#ffd783;
+      font-size:10px;
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    h1{
+      margin:18px 0 14px;
+      font-family:"Playfair Display",serif;
+      font-size:clamp(38px,7vw,58px);
+      line-height:1;
+      letter-spacing:-.035em;
+    }
+
+    .top p{
+      margin:0;
+      color:rgba(255,255,255,.78);
+      font-size:17px;
+      line-height:1.65;
+    }
+
+    .body{padding:34px 38px 38px}
+
+    .summary{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:18px;
+      align-items:center;
+      padding:22px;
+      border:1px solid var(--line);
+      border-radius:20px;
+      background:var(--cream);
+    }
+
+    .summary span,.summary strong{display:block}
+
+    .summary span{
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .summary strong{
+      margin-top:4px;
+      font-size:19px;
+    }
+
+    .price{
+      color:var(--wine);
+      font-family:"Playfair Display",serif;
+      font-size:48px;
+      font-weight:700;
+      white-space:nowrap;
+    }
+
+    .status-box{
+      display:none;
+      margin:24px 0;
+      padding:20px;
+      border-radius:18px;
+      line-height:1.6;
+    }
+
+    .status-box.show{display:block}
+
+    .status-success{
+      background:#e8f7ef;
+      border:1px solid #b9e5cc;
+      color:#145a38;
+    }
+
+    .status-pending{
+      background:#fff7df;
+      border:1px solid #f1d88b;
+      color:#6c5212;
+    }
+
+    .status-error{
+      background:#ffecef;
+      border:1px solid #efbcc7;
+      color:#781b32;
+    }
+
+    .status-box strong{
+      display:block;
+      margin-bottom:4px;
+      font-size:18px;
+    }
+
+    .steps{
+      display:grid;
+      gap:14px;
+      margin:28px 0;
+      padding:0;
+      list-style:none;
+    }
+
+    .steps li{
+      display:grid;
+      grid-template-columns:34px 1fr;
+      gap:12px;
+      align-items:start;
+      color:var(--muted);
+      line-height:1.55;
+    }
+
+    .steps span{
+      width:34px;
+      height:34px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      color:var(--white);
+      background:linear-gradient(135deg,var(--magenta),var(--coral));
+      font-weight:800;
+    }
+
+    .buttons{
+      display:grid;
+      gap:12px;
+    }
+
+    .btn{
+      border:0;
+      min-height:58px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:16px 24px;
+      border-radius:999px;
+      font:inherit;
+      font-weight:800;
+      text-align:center;
+      text-decoration:none;
+      cursor:pointer;
+    }
+
+    .btn-pay{
+      color:#2c160c;
+      background:linear-gradient(135deg,#ffd55a,var(--gold),#f79d24);
+      box-shadow:0 18px 40px rgba(245,183,61,.28);
+    }
+
+    .btn-whatsapp{
+      color:#fff;
+      background:linear-gradient(135deg,#1fa866,#128c55);
+    }
+
+    .btn-secondary{
+      color:var(--wine);
+      background:#fff;
+      border:1px solid var(--line);
+    }
+
+    .btn[disabled]{
+      opacity:.65;
+      cursor:wait;
+    }
+
+    .notice{
+      margin:22px 0 0;
+      padding:16px 18px;
+      border-left:4px solid var(--coral);
+      border-radius:10px;
+      background:#fff3ef;
+      color:#6b4b55;
+      font-size:13px;
+      line-height:1.6;
+    }
+
+    .error{
+      display:none;
+      margin-top:18px;
+      padding:16px;
+      border-radius:12px;
+      color:#6b152d;
+      background:#ffe8ee;
+      font-weight:700;
+    }
+
+    .error.show{display:block}
+    .hidden{display:none!important}
+
+    @media(max-width:580px){
+      body{padding:18px 12px}
+      .top,.body{padding-left:22px;padding-right:22px}
+      .summary{grid-template-columns:1fr}
+      .price{font-size:42px}
+    }
   </style>
 </head>
+
 <body>
+
   <main class="page">
-    <div class="brand"><strong>Sara Rebouças</strong><span>Imersão Metanoia</span></div>
+
+    <div class="brand">
+      <strong>Sara Rebouças</strong>
+      <span>Imersão Metanoia</span>
+    </div>
+
     <section class="card">
+
       <div class="top">
         <span class="badge" id="badge">Última etapa da inscrição</span>
+
         <h1 id="title">Sua ficha foi recebida.</h1>
-        <p id="subtitle">Agora conclua o pagamento para garantir sua vaga.</p>
+
+        <p id="subtitle">
+          Agora conclua o pagamento para garantir sua vaga.
+        </p>
       </div>
+
       <div class="body">
+
         <div class="summary">
-          <div><span>Opção selecionada</span><strong id="optionName">Carregando...</strong></div>
-          <div class="price" id="price">—</div>
+          <div>
+            <span>Inscrição</span>
+            <strong>Imersão Metanoia — Chamados para Cuidar</strong>
+          </div>
+
+          <div class="price">R$ 47</div>
         </div>
 
-        <div id="statusBox" class="status-box" role="status" aria-live="polite"></div>
+        <div
+          id="statusBox"
+          class="status-box"
+          role="status"
+          aria-live="polite">
+        </div>
 
         <ol class="steps" id="steps">
-          <li><span>1</span><div>Clique em <strong>Ir para o pagamento</strong>.</div></li>
-          <li><span>2</span><div>Escolha a forma de pagamento disponível no Checkout Pro do Mercado Pago.</div></li>
-          <li><span>3</span><div>Ao finalizar, o Mercado Pago trará você de volta para esta página.</div></li>
+          <li>
+            <span>1</span>
+            <div>
+              Clique em <strong>Ir para o pagamento</strong>.
+            </div>
+          </li>
+
+          <li>
+            <span>2</span>
+            <div>
+              Escolha a forma de pagamento disponível no Mercado Pago.
+            </div>
+          </li>
+
+          <li>
+            <span>3</span>
+            <div>
+              Ao finalizar, o Mercado Pago trará você de volta para esta página.
+            </div>
+          </li>
         </ol>
 
         <div class="buttons">
-          <button class="btn btn-pay" id="paymentButton" type="button">Ir para o pagamento</button>
-          <a class="btn btn-whatsapp hidden" id="whatsappButton" href="#" target="_blank" rel="noopener noreferrer">Enviar confirmação pelo WhatsApp</a>
-          <a class="btn btn-secondary hidden" id="retryButton" href="#">Tentar o pagamento novamente</a>
+
+          <button
+            class="btn btn-pay"
+            id="paymentButton"
+            type="button">
+            Pagar R$ 47
+          </button>
+
+          <a
+            class="btn btn-whatsapp hidden"
+            id="whatsappButton"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer">
+            Enviar confirmação pelo WhatsApp
+          </a>
+
+          <a
+            class="btn btn-secondary hidden"
+            id="retryButton"
+            href="concluir-inscricao-imersao.html">
+            Tentar o pagamento novamente
+          </a>
+
         </div>
 
-        <p class="notice" id="notice"><strong>Importante:</strong> sua vaga será considerada confirmada após a aprovação do pagamento.</p>
-        <div class="error" id="errorMessage">Não foi possível identificar a opção escolhida. Volte ao formulário e tente novamente.</div>
+        <p class="notice" id="notice">
+          <strong>Importante:</strong>
+          sua vaga será considerada confirmada após a aprovação do pagamento.
+        </p>
+
+        <div class="error" id="errorMessage"></div>
+
       </div>
     </section>
   </main>
 
   <script>
-    const options = {
-      '47': { name: 'Imersão Metanoia — sem almoço', price: 'R$ 47', label: 'somente imersão' },
-      '73': { name: 'Imersão Metanoia — com almoço', price: 'R$ 73', label: 'imersão com almoço' }
-    };
 
     const API_BASE_URL = 'https://site-sepia-tau-93.vercel.app';
 
     const params = new URLSearchParams(window.location.search);
-    const opcao = params.get('opcao');
-    const selected = options[opcao];
-    const resultado = params.get('resultado');
-    const paymentId = params.get('payment_id') || params.get('collection_id');
 
-    const optionName = document.getElementById('optionName');
-    const price = document.getElementById('price');
+    const resultado = params.get('resultado');
+
+    const paymentId =
+      params.get('payment_id') ||
+      params.get('collection_id');
+
     const paymentButton = document.getElementById('paymentButton');
     const whatsappButton = document.getElementById('whatsappButton');
     const retryButton = document.getElementById('retryButton');
@@ -75,122 +401,243 @@
     const steps = document.getElementById('steps');
     const notice = document.getElementById('notice');
 
-    if (!selected) {
-      optionName.textContent = 'Opção não identificada';
-      price.textContent = '—';
-      paymentButton.classList.add('hidden');
-      errorMessage.classList.add('show');
-    } else {
-      optionName.textContent = selected.name;
-      price.textContent = selected.price;
-      retryButton.href = `concluir-inscricao-imersao.html?opcao=${opcao}`;
-    }
 
     function setWhatsapp() {
-      if (!selected) return;
+
       const text = encodeURIComponent(
         `Olá! Meu pagamento da Imersão Metanoia foi aprovado.\n\n` +
-        `Opção: ${selected.label}\nValor: ${selected.price}\n` +
-        (paymentId ? `Pagamento Mercado Pago: ${paymentId}\n` : '') +
+        `Valor: R$ 47\n` +
+        (paymentId
+          ? `Pagamento Mercado Pago: ${paymentId}\n`
+          : '') +
         `\nEstou enviando a confirmação da minha inscrição.`
       );
-      whatsappButton.href = `https://wa.me/5521997652825?text=${text}`;
+
+      whatsappButton.href =
+        `https://wa.me/5521997652825?text=${text}`;
     }
 
+
     function showApproved() {
+
       badge.textContent = 'Pagamento aprovado';
+
       title.textContent = 'Sua vaga está garantida.';
-      subtitle.textContent = 'Pagamento aprovado. Nos vemos na Imersão Metanoia.';
-      statusBox.className = 'status-box status-success show';
-      statusBox.innerHTML = '<strong>Pagamento confirmado ✓</strong>Seu pagamento foi identificado como aprovado pelo Mercado Pago.';
+
+      subtitle.textContent =
+        'Pagamento aprovado. Sua inscrição na Imersão Metanoia foi confirmada.';
+
+      statusBox.className =
+        'status-box status-success show';
+
+      statusBox.innerHTML =
+        '<strong>Pagamento confirmado ✓</strong>' +
+        'Seu pagamento foi identificado como aprovado pelo Mercado Pago.';
+
       paymentButton.classList.add('hidden');
       retryButton.classList.add('hidden');
       steps.classList.add('hidden');
+
       whatsappButton.classList.remove('hidden');
-      notice.innerHTML = '<strong>Pronto:</strong> guarde esta página como confirmação. Se desejar, envie a confirmação pelo WhatsApp da equipe.';
+
+      notice.innerHTML =
+        '<strong>Pronto!</strong> Sua inscrição está confirmada. ' +
+        'Se desejar, envie esta confirmação pelo WhatsApp da equipe.';
+
       setWhatsapp();
     }
 
+
     function showPending() {
+
       badge.textContent = 'Pagamento em análise';
-      title.textContent = 'Seu pagamento está sendo processado.';
-      subtitle.textContent = 'Assim que o Mercado Pago concluir a análise, a situação será atualizada.';
-      statusBox.className = 'status-box status-pending show';
-      statusBox.innerHTML = '<strong>Pagamento pendente</strong>A aprovação ainda não foi concluída. Não faça um segundo pagamento agora.';
+
+      title.textContent =
+        'Seu pagamento está sendo processado.';
+
+      subtitle.textContent =
+        'Aguarde a confirmação do Mercado Pago.';
+
+      statusBox.className =
+        'status-box status-pending show';
+
+      statusBox.innerHTML =
+        '<strong>Pagamento pendente</strong>' +
+        'A aprovação ainda não foi concluída. ' +
+        'Não faça um segundo pagamento agora.';
+
       paymentButton.classList.add('hidden');
       steps.classList.add('hidden');
-      retryButton.classList.remove('hidden');
-      retryButton.textContent = 'Voltar à etapa de pagamento';
-      notice.innerHTML = '<strong>Atenção:</strong> pagamentos por alguns meios podem levar mais tempo para serem confirmados.';
+
+      retryButton.classList.add('hidden');
+
+      notice.innerHTML =
+        '<strong>Atenção:</strong> alguns meios de pagamento ' +
+        'podem levar mais tempo para serem confirmados.';
     }
+
 
     function showFailure() {
+
       badge.textContent = 'Pagamento não concluído';
-      title.textContent = 'O pagamento não foi concluído.';
-      subtitle.textContent = 'Você pode tentar novamente sem precisar preencher a ficha outra vez.';
-      statusBox.className = 'status-box status-error show';
-      statusBox.innerHTML = '<strong>Pagamento não aprovado</strong>Nenhum novo pagamento será feito até você iniciar outra tentativa.';
+
+      title.textContent =
+        'O pagamento não foi concluído.';
+
+      subtitle.textContent =
+        'Você pode tentar novamente sem preencher sua ficha outra vez.';
+
+      statusBox.className =
+        'status-box status-error show';
+
+      statusBox.innerHTML =
+        '<strong>Pagamento não aprovado</strong>' +
+        'Você ainda pode realizar uma nova tentativa.';
+
       paymentButton.classList.add('hidden');
       steps.classList.add('hidden');
+
       retryButton.classList.remove('hidden');
-      retryButton.textContent = 'Tentar novamente';
+
+      retryButton.textContent =
+        'Tentar pagamento novamente';
+
+      notice.innerHTML =
+        '<strong>Sua inscrição ainda não foi confirmada.</strong> ' +
+        'Clique acima para realizar uma nova tentativa.';
     }
 
+
     async function verifyReturn() {
+
       if (!paymentId) {
-        if (resultado === 'pendente') showPending();
-        else if (resultado === 'erro') showFailure();
-        else if (resultado === 'sucesso') {
-          statusBox.className = 'status-box status-pending show';
-          statusBox.innerHTML = '<strong>Verificando pagamento...</strong>Aguarde alguns segundos.';
+
+        if (resultado === 'pendente') {
+          showPending();
         }
+
+        else if (resultado === 'erro') {
+          showFailure();
+        }
+
+        else if (resultado === 'sucesso') {
+
+          statusBox.className =
+            'status-box status-pending show';
+
+          statusBox.innerHTML =
+            '<strong>Verificando pagamento...</strong>' +
+            'Aguarde alguns segundos.';
+        }
+
         return;
       }
 
       try {
-        const r = await fetch(`${API_BASE_URL}/api/verificar-pagamento?payment_id=${encodeURIComponent(paymentId)}`);
-        const data = await r.json();
-        if (!r.ok) throw new Error(data.error || 'Falha na verificação');
-        if (data.opcao && data.opcao !== opcao) throw new Error('Valor do pagamento não corresponde ao ingresso selecionado.');
 
-        if (data.status === 'approved') showApproved();
-        else if (data.status === 'pending' || data.status === 'in_process' || data.status === 'authorized') showPending();
-        else showFailure();
+        const r = await fetch(
+          `${API_BASE_URL}/api/verificar-pagamento?payment_id=${encodeURIComponent(paymentId)}`
+        );
+
+        const data = await r.json();
+
+        if (!r.ok) {
+          throw new Error(
+            data.error || 'Falha na verificação'
+          );
+        }
+
+        if (data.aprovado === true) {
+
+          showApproved();
+
+        } else if (
+          data.status === 'pending' ||
+          data.status === 'in_process' ||
+          data.status === 'authorized'
+        ) {
+
+          showPending();
+
+        } else {
+
+          showFailure();
+        }
+
       } catch (e) {
-        statusBox.className = 'status-box status-pending show';
-        statusBox.innerHTML = '<strong>Pagamento recebido; confirmação em processamento.</strong>Se o Mercado Pago mostrou aprovação, não pague novamente. A equipe pode confirmar pelo comprovante.';
+
+        statusBox.className =
+          'status-box status-pending show';
+
+        statusBox.innerHTML =
+          '<strong>Confirmação em processamento.</strong>' +
+          'Se o Mercado Pago mostrou que o pagamento foi aprovado, ' +
+          'não faça outro pagamento.';
+
         setWhatsapp();
+
         whatsappButton.classList.remove('hidden');
       }
     }
 
+
     paymentButton.addEventListener('click', async () => {
-      if (!selected) return;
+
       paymentButton.disabled = true;
-      paymentButton.textContent = 'Abrindo Mercado Pago...';
+
+      paymentButton.textContent =
+        'Abrindo Mercado Pago...';
+
       errorMessage.classList.remove('show');
 
       try {
-        const response = await fetch(`${API_BASE_URL}/api/criar-pagamento`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ opcao })
-        });
+
+        const response = await fetch(
+          `${API_BASE_URL}/api/criar-pagamento`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({})
+          }
+        );
+
         const data = await response.json();
-        if (!response.ok || !data.checkout_url) throw new Error(data.detail || data.error || 'Não foi possível abrir o pagamento.');
+
+        if (!response.ok || !data.checkout_url) {
+
+          throw new Error(
+            data.detail ||
+            data.error ||
+            'Não foi possível abrir o pagamento.'
+          );
+        }
+
         window.location.href = data.checkout_url;
+
       } catch (error) {
-        errorMessage.textContent = `Não foi possível iniciar o pagamento. ${error.message || ''}`;
+
+        errorMessage.textContent =
+          `Não foi possível iniciar o pagamento. ${error.message || ''}`;
+
         errorMessage.classList.add('show');
+
         paymentButton.disabled = false;
-        paymentButton.textContent = `Pagar ${selected.price}`;
+
+        paymentButton.textContent =
+          'Pagar R$ 47';
       }
     });
 
-    if (selected) {
-      paymentButton.textContent = `Pagar ${selected.price}`;
-      if (resultado || paymentId) verifyReturn();
+
+    if (resultado || paymentId) {
+
+      verifyReturn();
+
     }
+
   </script>
+
 </body>
 </html>

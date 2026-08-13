@@ -22,7 +22,9 @@ module.exports = async function handler(req, res) {
 
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST, OPTIONS');
-    return res.status(405).json({ error: 'Método não permitido.' });
+    return res.status(405).json({
+      error: 'Método não permitido.'
+    });
   }
 
   const token = process.env.MERCADO_PAGO_ACCESS_TOKEN;
@@ -33,44 +35,20 @@ module.exports = async function handler(req, res) {
     });
   }
 
-  const { opcao } = req.body || {};
-
-  const produtos = {
-    '47': {
-      title: 'Imersão Metanoia — sem almoço',
-      unit_price: 47,
-      description: 'Ingresso para a Imersão Metanoia — 7 de setembro de 2026'
-    },
-
-    '73': {
-      title: 'Imersão Metanoia + almoço',
-      unit_price: 73,
-      description: 'Ingresso para a Imersão Metanoia + almoço — 7 de setembro de 2026'
-    }
-  };
-
-  const produto = produtos[String(opcao)];
-
-  if (!produto) {
-    return res.status(400).json({
-      error: 'Opção de ingresso inválida.'
-    });
-  }
-
   const baseUrl = 'https://sarareboucas.com.br';
 
   const referencia =
-    `metanoia-${opcao}-${Date.now()}-${crypto.randomBytes(4).toString('hex')}`;
+    `metanoia-47-${Date.now()}-${crypto.randomBytes(4).toString('hex')}`;
 
   const preference = {
     items: [
       {
-        id: `imersao-metanoia-${opcao}`,
-        title: produto.title,
-        description: produto.description,
+        id: 'imersao-metanoia-2026',
+        title: 'Imersão Metanoia — Chamados para Cuidar',
+        description: 'Inscrição online para a Imersão Metanoia — 7, 8 e 9 de setembro de 2026',
         quantity: 1,
         currency_id: 'BRL',
-        unit_price: produto.unit_price
+        unit_price: 47
       }
     ],
 
@@ -78,13 +56,13 @@ module.exports = async function handler(req, res) {
 
     back_urls: {
       success:
-        `${baseUrl}/concluir-inscricao-imersao.html?opcao=${opcao}&resultado=sucesso`,
+        `${baseUrl}/concluir-inscricao-imersao.html?resultado=sucesso`,
 
       pending:
-        `${baseUrl}/concluir-inscricao-imersao.html?opcao=${opcao}&resultado=pendente`,
+        `${baseUrl}/concluir-inscricao-imersao.html?resultado=pendente`,
 
       failure:
-        `${baseUrl}/concluir-inscricao-imersao.html?opcao=${opcao}&resultado=erro`
+        `${baseUrl}/concluir-inscricao-imersao.html?resultado=erro`
     },
 
     auto_return: 'approved',
@@ -93,7 +71,7 @@ module.exports = async function handler(req, res) {
 
     metadata: {
       evento: 'imersao-metanoia-2026',
-      opcao: String(opcao)
+      valor: '47'
     }
   };
 
@@ -128,6 +106,7 @@ module.exports = async function handler(req, res) {
       preference_id: data.id,
       checkout_url: data.init_point
     });
+
   } catch (error) {
     console.error(error);
 
